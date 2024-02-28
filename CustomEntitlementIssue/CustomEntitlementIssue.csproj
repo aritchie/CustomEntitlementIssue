@@ -16,6 +16,10 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+
+		<EnableCodeSigning>true</EnableCodeSigning>
+		<CodesignRequireProvisioningProfile>true</CodesignRequireProvisioningProfile>
+		<DisableCodesignVerification>true</DisableCodesignVerification>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -36,6 +40,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<CustomEntitlements Include="keychain-access-groups" Type="StringArray" Value="T9KLD6CCM9.org.shiny.customentitlementissue" />
+		<CustomEntitlements Include="keychain-access-groups" Type="StringArray" Value="%24(AppIdentifierPrefix)org.shiny.customentitlementissue" />
     </ItemGroup>
 </Project>
